@@ -1,0 +1,32 @@
+groups:
+- name: basic-rulesx
+  rules:
+  # 🚨 КРИТИЧНО: Сервер упал
+  - alert: InstanceDown
+    expr: up == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Instance {{ $labels.instance }} is down"
+      description: "Сервер недоступен более 1 минуты."
+
+  # 🔥 ВЫСОКАЯ НАГРУЗКА: CPU > 80%
+  - alert: HostHighCpuLoad
+    expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High CPU load on {{ $labels.instance }}"
+      description: "Загрузка процессора выше 80% в течение 5 минут."
+
+  # ⚠️ ВНИМАНИЕ: Память заканчивается (осталось < 10%)
+  - alert: HostOutOfMemory
+    expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10
+    for: 5m
+    labels:
+      severity: info
+    annotations:
+      summary: "Low memory on {{ $labels.instance }}"
+      description: "Свободной памяти осталось меньше 10%."

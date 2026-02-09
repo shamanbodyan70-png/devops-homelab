@@ -1,0 +1,26 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 1h
+  receiver: 'telegram_bot'
+
+receivers:
+- name: 'telegram_bot'
+  telegram_configs:
+  - bot_token: '7991165957:AAH7POiZGM6VAjQU1zuubQTZXLaNIa2mxtA'
+    api_url: 'https://api.telegram.org'
+    chat_id: -1003262430191
+    parse_mode: 'HTML'
+    message: |
+      {{ if eq .Status "firing" }}🔥 <b>АЛЕРТ: {{ .GroupLabels.alertname }}</b>{{ else }}✅ <b>ВОССТАНОВЛЕНО: {{ .GroupLabels.alertname }}</b>{{ end }}
+
+      {{ range .Alerts }}
+      📍 <b>Server:</b> {{ .Labels.instance }}
+      📝 <b>Info:</b> {{ .Annotations.description }}
+      🕒 <b>Time:</b> {{ .StartsAt.Format "15:04:05" }}
+
+      {{ end }}

@@ -79,7 +79,8 @@ This project is focused on hands-on DevOps practice:
 *  Secure service exposure
 *  Continuous improvement through experimentation
 
-Lessons Learned
+**Lessons Learned**
+
 Applying a bottom-up troubleshooting approach — starting from network interfaces and connectivity, then moving up to services and application layer.
 
 

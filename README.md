@@ -1,20 +1,20 @@
-DevOps Homelab
+**DevOps Homelab**
 
-Overview
+**Overview**
 
 This project is a self-learning DevOps homelab built on Ubuntu Server 24.04.
 The goal is to gain practical infrastructure experience and prepare for junior DevOps roles.
 
 The environment is fully containerized using Docker Compose and includes monitoring, logging, alerting, reverse proxy, and CI/CD tools.
 
-Architecture
+**Architecture**
 
 Ubuntu Server 24.04 (bare metal)
 Services containerized via Docker Compose
 Reverse proxy using Nginx
 Monitoring and logging stack deployed as separate services
 
-Stack
+**Stack**
 
 Docker / Docker Compose
 Prometheus
@@ -26,66 +26,54 @@ Nginx (reverse proxy + HTTPS via DuckDNS)
 Jenkins
 Gitea
 
-Implemented Features:
+**Implemented Features:**
 
-Monitoring
+**Monitoring**
 
 Host monitoring via Node Exporter
-
-
 Service monitoring via Prometheus
-
-
 Dashboards in Grafana
 
 
-Logging
-
+**Logging**
 
 Centralized log collection via Promtail
-
-
 Log aggregation with Loki
 
-Alerting
+**Alerting**
 
 Alertmanager configured with Telegram notifications
 Reverse Proxy
 Nginx as reverse proxy
 HTTPS enabled for selected services (DuckDNS + SSL)
 
-Security
+**Security**
 
 Disabled root login
 Disabled password authentication
 SSH key-based authentication only
 Custom SSH client configuration for simplified access
 
-Networking
+**Networking**
 
 Practical experience configuring a two-router setup (GPON + OpenWrt)
 Troubleshooting routing and interface issues
 Basic understanding of TCP/IP and routing principles
 
-CI/CD
+**CI/CD**
 
 Jenkins installed and configured
 Pipeline development in progress
 
-In Progress
+**In Progress**
 
 Bash automation scripts
-
-
 Jenkins pipelines
-
-
 Infrastructure structuring and optimization
 
-Goal
+**Goal**
 
 This project is focused on hands-on DevOps practice:
-
 Infrastructure setup
 Observability implementation
 Troubleshooting and debugging
